@@ -10,34 +10,21 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  
- *= require_bootstrap
+
+
+ *= require_tree "." 
+ *= stub "active_admin"
+
+ *= require_bootstrap 
  *
-
-
-
-
-
  *= require_self
-
- *= require_bootstrap-sprockets
-
- *= require_settings
-
- *= require_custom-form-v2
- *= require_darkblue
- *= require_essentials
- *= require_extralayers
- *= require_header-3
- *= require_plugins-hover-buttons
- *= require_layout
+ 
  *= require_owl.carousel
-
- *= require_pages
  *= require_owl.pack
  *= require_owl.theme
  *= require_owl.transitions
- *= require_layout
  *= require_owl.carousel
+ *= require_mdl 
  */
 
  @import "bootstrap";
@@ -53,6 +40,7 @@
  @import "header-3";
  @import "plugin-hover-buttons";
  @import "settings";
+ @import "settings-ie8";
  @import "extralayers";
  @import "layout";
  @import "owl.carousel";
@@ -62,11 +50,7 @@
  @import "slider.revolution/*";
  @import "fonts/*";
  
-
-
-
 //to stop having the fontawsome 404
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
- //import "./bootstrap/"
