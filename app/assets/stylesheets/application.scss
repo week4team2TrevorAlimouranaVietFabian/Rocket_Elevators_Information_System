@@ -10,24 +10,20 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  
-
-
- *= require_tree "." 
+ *= require_tree "."
  *= stub "active_admin"
 
  *= require_bootstrap 
  *
  *= require_self
- 
- *= require_owl.carousel
- *= require_owl.pack
- *= require_owl.theme
- *= require_owl.transitions
- *= require_owl.carousel
- *= require_mdl 
+
+ *= require_bootstrap-sprockets
+
+ *= require_bootstrap
+
  */
 
- @import "bootstrap";
+
  @import "bootstrap-social";
  @import "bootstrap-sprockets";
  @import "pages";

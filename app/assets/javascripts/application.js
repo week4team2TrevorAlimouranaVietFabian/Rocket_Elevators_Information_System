@@ -38,3 +38,8 @@
 //= require pages/jquery.nav.min
 //= require pages/scripts
 
+
+//= require_tree ./slider.revolution/
+
+
+
