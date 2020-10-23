@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2020_10_21_155307) do
 
-  create_table "dimcustomers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "dimcustomers", force: :cascade do |t|
     t.date "creation_date"
     t.string "company_name"
     t.string "full_name_of_company_main_contact"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "factcontact", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "factcontact", force: :cascade do |t|
     t.date "creation_date"
     t.string "company_name"
     t.string "email"
@@ -32,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "factelevator", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "factelevator", force: :cascade do |t|
     t.string "serial_number"
     t.string "date_of_commissioning"
     t.string "building_city"
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "factquote", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "factquote", force: :cascade do |t|
     t.date "creation"
     t.string "company_name"
     t.string "email"

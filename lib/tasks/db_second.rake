@@ -45,7 +45,7 @@ namespace :second do
     Rails.application.config.paths['db/migrate'] = ['db_second/migrate']
     # If you are using Rails 5 or higher change `paths['db/seeds']` to `paths['db/seeds.rb']`
     Rails.application.config.paths['db/seeds.rb'] = ['db_second/seeds.rb']
-    Rails.application.config.paths['config/database.yml'] = ['config/database_second.yml']
+    Rails.application.config.paths['config/database'] = ['config/database_second.yml']
   end
 
   task :revert_to_original_config do

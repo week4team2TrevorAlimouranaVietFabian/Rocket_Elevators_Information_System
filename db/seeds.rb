@@ -12220,7 +12220,7 @@ j=1
         administrator = rand(1..7)
         buildings = Building.new(
             address_id: addressID2,
-            address_of_the_building: Address.find(addressID2)[:number_and_street] + " " + Address.find(addressID2)[:suite_or_apartment] + " " + Address.find(addressID2)[:city] + " " + Address.find(addressID2)[:postal_code] + " " + Address.find(addressID2)[:country],
+            address_of_the_building: Address.find(addressID2)[:number_and_street].to_s + " " + Address.find(addressID2)[:suite_or_apartment].to_s + " " + Address.find(addressID2)[:city].to_s + " " + Address.find(addressID2)[:postal_code].to_s + " " + Address.find(addressID2)[:country].to_s,
             full_name_of_the_building_administrator: Employee.find(administrator)[:first_name] + " " + Employee.find(administrator)[:last_name],
             email_of_the_administrator_of_the_building: Employee.find(administrator)[:email],
             phone_number_of_the_building_administrator: Employee.find(administrator)[:phone_number],
