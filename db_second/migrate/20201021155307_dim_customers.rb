@@ -7,8 +7,6 @@ class DimCustomers < ActiveRecord::Migration[5.2]
       t.string :email_of_company_main_contact
       t.integer :nb_elevator
       t.string :contact_city
-  
-      t.timestamps
     end
   end
 end

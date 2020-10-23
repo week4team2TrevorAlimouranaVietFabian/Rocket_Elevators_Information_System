@@ -4,9 +4,7 @@ class FactContact < ActiveRecord::Migration[5.2]
       t.date :creation_date
       t.string :company_name
       t.string :email
-      t.integer :project_name
-  
-      t.timestamps
+      t.string :project_name
     end
   end
 end

@@ -22,25 +22,21 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
     t.string "email_of_company_main_contact"
     t.integer "nb_elevator"
     t.string "contact_city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "factcontact", force: :cascade do |t|
     t.date "creation_date"
     t.string "company_name"
     t.string "email"
-    t.integer "project_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "project_name"
   end
 
   create_table "factelevator", force: :cascade do |t|
     t.string "serial_number"
     t.string "date_of_commissioning"
+    t.integer "building_id"
+    t.integer "customer_id"
     t.string "building_city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "factquote", force: :cascade do |t|
@@ -48,8 +44,6 @@ ActiveRecord::Schema.define(version: 2020_10_21_155307) do
     t.string "company_name"
     t.string "email"
     t.integer "nb_elevator"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

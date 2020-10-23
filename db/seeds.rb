@@ -12180,9 +12180,9 @@ j=1
 
 #create the customers
 50.times do
-    technicalAthorityID = rand(1..7)
+    
     eMail = Faker::Internet.email
-    addressID = rand(1..100)
+
 
     users = AdminUser.new(
         email:eMail,
@@ -12191,10 +12191,14 @@ j=1
     )
     users.save
 
+    technicalAthorityID = rand(1..7)
+    addressID = rand(1..100)
+    companyName = Faker::Company.name
+    customerDate = Faker::Date.between(from: '1976-01-01', to: '2020-10-20')
     customers = Customer.new(
         #user_id: userID[i],
-        customer_creation_date: Faker::Date.between(from: '1976-01-01', to: '2020-10-20'),
-        company_name: Faker::Company.name,
+        customer_creation_date: customerDate,
+        company_name: companyName,
         company_headquarter_address: Address.find(addressID)[:number_and_street].to_s + " " + Address.find(addressID)[:suite_or_apartment].to_s + " " + Address.find(addressID)[:city].to_s + " " + Address.find(addressID)[:postal_code].to_s + " " + Address.find(addressID)[:country].to_s,
         
         full_name_company_contact: Faker::Name.name,
@@ -12212,7 +12216,7 @@ j=1
     )
 
     customers.save
-
+    
     #buildings are nested in their customer
     b = rand(1..3)
     b.times do
@@ -12242,9 +12246,79 @@ j=1
         buildingDetails.save
         
 
-        #batterie is nested in buiding
+        commissionDate = Faker::Date.between(from: customerDate, to: '2020-10-20')        
+        contactEmail = eMail
+        e = rand(1..5)
+        c = rand(1..5)
         bat = rand(1..3)
         Btype = rand(0..3)
+        EModel = elevatorModel[rand(0..2)]
+        appartements = 0
+        companies = 0
+        buisinesses = 0
+        occupants = 0
+        activity = 0
+        cost = 0
+        elevators = bat * c * e
+
+
+        if typeBuilding[Btype] == "Residential"
+            appartements = rand(10..300)
+
+        elsif typeBuilding[Btype] == "Commercial" 
+            buisinesses = rand(3..50)
+                      
+        else 
+            occupants = rand(0..300)
+            activity = rand(6..16)
+            companies = rand(3..50)
+        end
+
+      
+
+        if EModel == "Standard"
+            cost = 7565
+            inst = 0.1
+        elsif EModel == "Premium"
+            cost = 12345
+            inst = 0.13
+        else
+            cost = 15400
+            inst = 0.16
+        end
+
+
+        #onequote was made per BUILDING
+
+        quotes = Quote.new(
+            created_at:Faker::Date.between(from: '1976-01-01', to: customerDate) ,
+            company_name: companyName,
+            contact_email: eMail,
+            building_type:  typeBuilding[Btype],
+            no_of_appartments: appartements,
+            no_of_floors: rand(3..70),
+            no_of_basements: rand(0..5),
+            no_of_elevators_cages: bat * c * e,
+            no_of_parking_spaces: rand(0..200),
+            no_of_tenant_companies:companies ,
+            no_of_distinct_businesses:buisinesses ,
+            max_occupants_per_floors: occupants,
+            no_of_elevators: elevators,
+            product_grade: EModel,
+            elevator_cost: cost,
+            installation_cost: inst * cost * elevators,
+            total_cost: (elevators * inst * cost) + (elevators * cost),
+            no_of_daily_hours_of_activity: activity,       
+
+        )
+        quotes.save
+        print "total quote cost : "
+        puts   (elevators * inst * cost) + (elevators * cost)
+
+
+
+
+        #batterie is nested in buiding
         bat.times do
             stat = rand(0..5)
             if stat > 0
@@ -12254,8 +12328,8 @@ j=1
                 building_id: bcounter,
                 type_of_building: typeBuilding[Btype],
                 status: status[stat],
-                employee_id: rand(0..7),
-                commissioning_date: Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
+                employee_id: technicalAthorityID,
+                commissioning_date: commissionDate,
                 last_inspection_date: Faker::Date.between(from: '2019-10-20', to: '2020-10-20'),
                 operations_certificate: Faker::DrivingLicence.british_driving_licence,
                 information: Faker::Company.buzzword,
@@ -12270,13 +12344,11 @@ j=1
             # puts Battery.last[:id]
 
             
-            
             if Battery.last[:id] == batCounter
 
 
 
                 #columns inside batteries
-                c = rand(1..5)
                 c.times do
                     stat = rand(0..5)
                     if stat > 0
@@ -12301,17 +12373,16 @@ j=1
 
                         #elevators inside Columns
 
-                        e = rand(1..5)
                         e.times do
                             stat = rand(0..5)
                             if stat > 0
                                 stat = 1
                             end
-            
+
                             elevators = Elevator.new(
                                 column_id: cCounter,
                                 serial_number:Faker::Device.serial,
-                                model:elevatorModel[rand(0..2)],
+                                model: EModel,
                                 type_of_building:Battery.find(batCounter)[:type_of_building].to_s,
                                 status:status[stat],
                                 commissioning_date:Faker::Date.between(from: Customer.find(j)[:customer_creation_date], to: '2020-10-20'),
@@ -12344,6 +12415,23 @@ j=1
     end
     i = i+1
     j += 1
+end
+
+147.times do
+    leads = Lead.new(
+        contact_full_name: Faker::Name.name ,
+        company_name: Faker::Company.name,
+        email: Faker::Internet.email ,
+        phone: Faker::PhoneNumber.cell_phone,
+        project_name: Faker::Company.catch_phrase,
+        project_description: Faker::Lorem.sentence,
+        department: typeBuilding[rand(0..3)],
+        message: Faker::Lorem.paragraphs
+        # attached_file:Faker::Types.rb_string 
+
+
+    )
+    leads.save
 end
 
 
