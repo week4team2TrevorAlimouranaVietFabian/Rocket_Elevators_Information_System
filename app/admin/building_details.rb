@@ -5,7 +5,7 @@ ActiveAdmin.register BuildingDetail do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :information_key, :value
+  permit_params :building_id, :information_key, :value
   #
   # or
   #
@@ -16,6 +16,7 @@ ActiveAdmin.register BuildingDetail do
   # end
   
   index do
+    column :building_id
     column :information_key
     column :value
     actions

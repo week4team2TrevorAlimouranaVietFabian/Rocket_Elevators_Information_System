@@ -17,30 +17,20 @@
 
 //= require jquery_ujs
 
-
 //= require bootstrap
 
-
-
-
 //= require popper
-
-
 
 //= require pages/demo.revolution_slider
 
 //= require pages/owl.carousel
 //= require pages/owl.carousel.min
 
-
 //= require pages/smoothscroll
 //= require scripts
 
-
 //= require pages/jquery.mixitup.min
-
 
 //= require_tree ./slider.revolution/
 
 //= require quote
-//= require contact

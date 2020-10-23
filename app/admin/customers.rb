@@ -1,9 +1,10 @@
 ActiveAdmin.register Customer do
-  permit_params :user_id, :customer_creation_date, :company_name, :company_headquarter_address, :full_name_company_contact, :company_contact_phone, :email_company_contact, :company_description, :full_name_service_technical_authority, :technical_authority_phone, :technical_manager_email
+  permit_params :employee_id, :admin_user_id, :address_id, :customer_creation_date, :company_name, :company_headquarter_address, :full_name_company_contact, :company_contact_phone, :email_company_contact, :company_description, :full_name_service_technical_authority, :technical_authority_phone, :technical_manager_email
 
   index do
     selectable_column
-    column :user_id
+    column :admin_user_id, as:"User"
+    column :address_id
     column :customer_creation_date
     column :company_name
     column :company_headquarter_address
@@ -17,7 +18,7 @@ ActiveAdmin.register Customer do
     actions
   end
 
-  filter :user_id
+  filter :admin_user_id
   filter :customer_creation_date
   filter :company_name
   filter :company_headquarter_address

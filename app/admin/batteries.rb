@@ -3,6 +3,7 @@ ActiveAdmin.register Battery do
 
   index do
     selectable_column
+    id_column
     #column :building_id
     column :type_of_building
     column :status

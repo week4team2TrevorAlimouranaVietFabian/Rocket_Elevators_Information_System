@@ -5,7 +5,7 @@ ActiveAdmin.register Column do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :type_of_building, :number_of_floors_served, :status, :information, :notes
+  permit_params :battery_id, :type_of_building, :number_of_floors_served, :status, :information, :notes
   #
   # or
   #
@@ -16,6 +16,7 @@ ActiveAdmin.register Column do
   # end
 
   index do
+    column :battery_id
     column :type_of_building
     #column :number_of_floors_served
     column :status

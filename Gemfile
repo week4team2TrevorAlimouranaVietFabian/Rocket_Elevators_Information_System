@@ -92,5 +92,13 @@ gem 'jquery-countdown-rails', '~> 2.0', '>= 2.0.2'
 
 gem 'country_select', '~> 4.0'
 
+gem 'pg', '~> 1.2', '>= 1.2.3'
 
 gem 'faker', '~> 2.14'
+
+
+gem 'populator', '~> 1.0'
+
+
+gem 'omniauth'
+

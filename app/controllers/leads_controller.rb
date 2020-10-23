@@ -16,6 +16,9 @@ class LeadsController < InheritedResources::Base
 
   def show
     @lead = Lead.find(params(:lead))
+    send_data(@lead.file_contents,
+              type: @lead.content_type,
+              filename: @lead.filename)
   end
 
   def create
@@ -24,9 +27,8 @@ class LeadsController < InheritedResources::Base
     @lead = Lead.new(lead_params)
 
     respond_to do |format|
-      # @lead.update!(lead_params)
+
       if @lead.save
-        # redirect_to root_path
         format.html { redirect_to root_path, notice: "Save process completed!" }
         format.json { render json: @lead, status: :created, location: @lead }
       else
