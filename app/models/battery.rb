@@ -5,4 +5,6 @@ class Battery < ApplicationRecord
     def display_name
         "#{id}"
     end
+    belongs_to :customer
+    
 end

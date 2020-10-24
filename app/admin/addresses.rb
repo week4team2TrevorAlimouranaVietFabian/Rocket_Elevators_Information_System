@@ -3,21 +3,21 @@ ActiveAdmin.register Address do
 
   index do
     selectable_column
-    column :type_of_address
-    column :status
-    column :entity
+    #column :type_of_address
+    #column :status
+    #column :entity
     column :number_and_street
     column :suite_or_apartment
     column :city
     column :postal_code
     column :country
-    column :notes
+    #column :notes
     actions
   end
 
-  filter :type_of_address
+  #filter :type_of_address
   filter :status
-  filter :entity
+  #filter :entity
   filter :number_and_street
   filter :suite_or_apartment
   filter :city

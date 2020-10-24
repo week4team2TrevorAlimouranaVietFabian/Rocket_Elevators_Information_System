@@ -5,7 +5,7 @@ ActiveAdmin.register AdminUser, as:"User" do
     selectable_column
     id_column
     column :email
-    column :encrypted_password
+    #column :encrypted_password
     column :created_at
     actions
   end

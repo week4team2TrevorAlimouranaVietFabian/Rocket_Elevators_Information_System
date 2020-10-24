@@ -46,7 +46,7 @@ class QuotesController < ApplicationController
             # p @quote
             # p '------------------'
             # p '------------------'
-                if @quote.save 
+            if @quote.save 
                 format.html { redirect_to @quote, notice: "Save process completed!" }
                 format.json { render json: @quote, status: :created, location: @quote }
             else

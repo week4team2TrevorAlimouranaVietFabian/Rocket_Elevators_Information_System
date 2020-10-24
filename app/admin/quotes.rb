@@ -13,8 +13,8 @@ ActiveAdmin.register Quote do
     column :building_type
     column :no_of_elevators
     column :product_grade
-    column :elevator_cost
-    column :installation_cost
+    #column :elevator_cost
+    #column :installation_cost
     column :total_cost
     actions
   end

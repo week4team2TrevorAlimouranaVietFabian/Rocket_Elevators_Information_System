@@ -102,3 +102,5 @@ gem 'populator', '~> 1.0'
 
 gem 'omniauth'
 
+gem 'cancancan'
+

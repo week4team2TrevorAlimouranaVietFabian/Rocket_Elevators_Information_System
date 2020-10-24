@@ -8,7 +8,7 @@ ActiveAdmin.register Lead do
 
   index do
     selectable_column
-    id_column
+    #id_column
     column :created_at
     column :contact_full_name
     column :company_name

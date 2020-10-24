@@ -2,7 +2,7 @@ class AdminUser < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, 
-         :recoverable, :rememberable, :validatable, :registerable, :omniauthable
+         :recoverable, :rememberable, :validatable, :registerable
   
   has_many :employees
   def display_name
@@ -13,23 +13,27 @@ class AdminUser < ApplicationRecord
     "#{email}"
   end
 
-  # SCOPES
-  scope :filter_by_email, -> (email) { where email: email}
+  #belongs_to :quote
 
-  # Check if user is an employee
-  #user = @admin_user 
-  
+  # Assign admin role if user is an Employee
+  def admin?
+    employees = Employee.where(["email = ?", email])
+    if employees.size > 0
+      true
+    else
+    end
+  end
 
-  #user_email = params[:email]
-  #employees = Employee.all
+  # Assign customer role if user is a Customer
+  def customer?
+    
+    customers = Customer.where(["email_company_contact = ?", email])
+    #customer_id = Customer.find()
+    if customers.size > 0
+      true
+    else
+    end
+  end
 
-  #p employees
-  #employees = employees.where(email: user_email)
-  #p employees
 
-
-  #if employees.size > 0
-
-
-  #end
 end

@@ -15,20 +15,20 @@ ActiveAdmin.register Building do
   #   permitted
   # end
   index do
-    column :customer_id
-    column :address_id
+    #column :address_id
     column :address_of_the_building
     column :full_name_of_the_building_administrator
-    column :email_of_the_administrator_of_the_building
+    #column :email_of_the_administrator_of_the_building
     #column :phone_number_of_the_building_administrator
     column :full_name_of_the_technical_contact_for_the_building
-    column :technical_contact_email_for_the_building
+    #column :technical_contact_email_for_the_building
     #column :technical_contact_phone_for_the_building
     actions
   end
 
   filter :address_of_the_building
-
-
+  filter :full_name_of_the_building_administrator
+  filter :full_name_of_the_technical_contact_for_the_building
+  filter :customer_id
 
 end

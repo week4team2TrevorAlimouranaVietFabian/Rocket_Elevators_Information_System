@@ -4,5 +4,7 @@ class Column < ApplicationRecord
     def display_name
         "#{id}"
     end
-    belongs_to :battery    
+    belongs_to :battery 
+    belongs_to :customer   
+    
 end

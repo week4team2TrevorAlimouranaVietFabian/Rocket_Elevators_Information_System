@@ -3,31 +3,32 @@ ActiveAdmin.register Customer do
 
   index do
     selectable_column
+    id_column
     column :admin_user_id, as:"User"
-    column :address_id
+    #column :address_id
     column :customer_creation_date
     column :company_name
     column :company_headquarter_address
     column :full_name_company_contact
     column :company_contact_phone
     column :email_company_contact
-    column :company_description
-    column :full_name_service_technical_authority
+    #column :company_description
+    #column :full_name_service_technical_authority
     column :technical_authority_phone
-    column :technical_manager_email
+    #column :technical_manager_email
     actions
   end
 
-  filter :admin_user_id
-  filter :customer_creation_date
+  #filter :admin_user_id
+  #filter :customer_creation_date
   filter :company_name
   filter :company_headquarter_address
   filter :full_name_company_contact
   filter :company_contact_phone
   filter :email_company_contact
   filter :full_name_service_technical_authority
-  filter :technical_authority_phone
-  filter :technical_manager_email
+  #filter :technical_authority_phone
+  #filter :technical_manager_email
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
